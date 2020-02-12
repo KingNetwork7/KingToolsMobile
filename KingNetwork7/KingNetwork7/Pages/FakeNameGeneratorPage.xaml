@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KingNetwork7.Pages.FakeNameGeneratorPage"
+             Title="Fake Name Generator">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Black" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <RefreshView IsRefreshing="{Binding IsBusy, Mode=OneWay}" Command="{StaticResource FakeInfoRefreshViewRefreshingCommand}">
+                <ScrollView>
+                    <TableView Intent="Settings">
+                        <TableRoot>
+                            <TableSection Title="Personal Details">
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="Name : " VerticalOptions="CenterAndExpand" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.Name}" 
+                                               TextColor="White" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20" 
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.Name}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="Country : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.Country}" 
+                                               TextColor="White"  FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.Country}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="Address : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.Address}" 
+                                               TextColor="White" FontSize="10" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.Address}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="City : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.City}" 
+                                               TextColor="White"  FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.City}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="PostCode : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.PostCode}" 
+                                               TextColor="White" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.PostCode}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="Gender : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.Gender}" 
+                                               TextColor="White" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.Gender}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="Date Of Birth : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.DateOfBirth}" 
+                                               TextColor="White" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.DateOfBirth}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="Phone : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.Phone}" 
+                                               TextColor="White" FontSize="10" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.Phone}"/>
+                                    </Grid>
+                                </ViewCell>
+                            </TableSection>
+                            <TableSection Title="Financial Details">
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="BankName : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.BankName}" 
+                                               TextColor="White" FontSize="10" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.BankName}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="BankCode : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.BankCode}" 
+                                               TextColor="White" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.BankCode}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="BIC : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.BIC}" 
+                                               TextColor="White" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.BIC}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="IBAN:" VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.IBAN}" 
+                                               TextColor="White" FontSize="10" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.IBAN}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="AccountNumber:" VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.AccountNumber}" 
+                                               TextColor="White" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.AccountNumber}"/>
+                                    </Grid>
+                                </ViewCell>
+                            </TableSection>
+                            <TableSection Title="Education">
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="Qualification : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.Qualification}" 
+                                               TextColor="White" FontSize="10" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.Qualification}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="Institution : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.Institution}" 
+                                               TextColor="White" FontSize="10" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.Institution}"/>
+                                    </Grid>
+                                </ViewCell>
+                            </TableSection>
+                            <TableSection Title="Employment Details">
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="CompanyName : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.CompanyName}" 
+                                               TextColor="White" FontSize="10" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.CompanyName}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="CompanyAddress : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.CompanyAddress}" 
+                                               TextColor="White" FontSize="10" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.CompanyAddress}"/>
+                                    </Grid>
+                                </ViewCell>
+                            </TableSection>
+                            <TableSection Title="Vehicle Details">
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="Vehicle : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.Vehicle}" 
+                                               TextColor="White" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.Vehicle}"/>
+                                    </Grid>
+                                </ViewCell>
+                                <ViewCell>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="VIN : " VerticalOptions="Center" HorizontalOptions="Start" 
+                                               Grid.Column="0" TextColor="#FFFFFF" FontSize="12"/>
+                                        <Label Grid.Column="1" Text="{Binding GeneratedFakePerson.VIN}" 
+                                               TextColor="White" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                                        <ImageButton Source="ic_copy_dark" HorizontalOptions="End" VerticalOptions="Center"
+                                                     Grid.Column="2" WidthRequest="20"
+                                                     Command="{StaticResource CopyCommand}" CommandParameter="{Binding GeneratedFakePerson.VIN}"/>
+                                    </Grid>
+                                </ViewCell>
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
+                </ScrollView>
+            </RefreshView>
+
+            <Frame Grid.Row="1" BackgroundColor="#111111">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Picker SelectedIndex="0" TextColor="#FFFFFF" x:Name="CountryPicker" Title="Country" 
+                            TitleColor="#FFFFFF" SelectedIndexChanged="CountryPicker_SelectedIndexChanged"
+                            FontSize="14"/>
+                    <Button Text="generate" VerticalOptions="FillAndExpand" Grid.Column="1" 
+                            Command="{StaticResource GetNewFakePersonInfos}"
+                            BackgroundColor="#EEEEEE" CornerRadius="10"/>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

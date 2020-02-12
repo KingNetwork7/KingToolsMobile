@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KingNetwork7.Pages.ViewEmailPage">
+    <ContentPage.Content>
+
+        <Grid BackgroundColor="#240042" Padding="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Frame Grid.Row="0" HorizontalOptions="FillAndExpand" CornerRadius="10">
+                <Label Text="{Binding subject}" TextColor="#000000" FontSize="18" HorizontalTextAlignment="Center"/>
+            </Frame>
+
+            <Grid Grid.Row="1" BackgroundColor="Transparent" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalOptions="Start" Text="{Binding from, StringFormat='From : {0}'}" TextColor="#FFFFFF" Grid.Column="0"
+                       FontSize="10"/>
+                <Label HorizontalOptions="End" Text="{Binding date, StringFormat='In : {0}'}" TextColor="#FFFFFF" Grid.Column="1"
+                       FontSize="10"/>
+            </Grid>
+
+            <Frame BackgroundColor="#222222" Grid.Row="2" Padding="5">
+                <!--<Label Text="{Binding body}" HorizontalTextAlignment="Center" TextColor="#FFFFFF"/>-->
+                <!--<WebView x:Name="emailBodyWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                         Source="{Binding bodyAsHtmlWebViewSource}"/>-->
+                <WebView
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <WebView.Source>
+                        <HtmlWebViewSource Html="{Binding body}" />
+                    </WebView.Source>
+                </WebView>
+            </Frame>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KingNetwork7.Pages.CCCheckerPage"
+             Title="CC Checker">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#240042">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" BackgroundColor="White" Margin="15,5,15,5" CornerRadius="10">
+                <StackLayout Orientation="Vertical">
+                    <Editor VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="CardsEditor"
+                            Placeholder="Cards ..." PlaceholderColor="Black" TextColor="Black" FontSize="14" 
+                            Text="{Binding CheckingCards, Mode=TwoWay}" IsReadOnly="{Binding IsBusy}"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Button Text="Start" HorizontalOptions="Start" x:Name="btnStart" Command="{StaticResource CheckCreditCardsCommand}"
+                                CommandParameter="{Binding CheckingCards}"/>
+                        <Button Text="Paste" HorizontalOptions="EndAndExpand" x:Name="btnPaste" Clicked="btnPaste_Clicked"/>
+                        <Button Text="Clear" HorizontalOptions="End" x:Name="btnClear" Clicked="btnClear_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.RowSpan="2" BackgroundColor="Transparent" Margin="3,0,3,5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Column="0" x:Name="LivesFrame" CornerRadius="5">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Lives" TextColor="#333333" FontSize="14"/>
+                            <ListView x:Name="Lives" HasUnevenRows="True" ItemsSource="{Binding LiveCards}" ItemTapped="Lives_ItemTapped">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextCell Text="{Binding CCNumber}" Detail="{Binding CVVAndExpireDate}"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Grid.Column="1" x:Name="BadsFrame" CornerRadius="5">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Bads" TextColor="#333333" FontSize="14"/>
+                            <ListView x:Name="Bads" HasUnevenRows="True" ItemsSource="{Binding BadCards}" ItemTapped="Bads_ItemTapped">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextCell Text="{Binding CCNumber}" Detail="{Binding CVVAndExpireDate}"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

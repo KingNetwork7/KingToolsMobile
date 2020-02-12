@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:pages="clr-namespace:KingNetwork7.Pages"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+            x:Class="KingNetwork7.MainPage"
+            Title="KING TOOLS">
+
+    <Grid BackgroundColor="#EFEFEF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Frame BackgroundColor="Transparent" Grid.Row="0">
+            <ListView ItemsSource="{Binding MenuItems}" HasUnevenRows="True" x:Name="MenuListView" ItemTapped="MenuListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ic:CircleImage HeightRequest="70" Source="{Binding IconName}"
+                                                BorderColor="#7E00E6" BorderThickness="2" Grid.Column="0" Grid.Row="0"
+                                                Grid.RowSpan="2"/>
+                                <Label Text="{Binding Title}" TextColor="Black" Grid.Row="0" Grid.Column="1" Margin="10,10,10,5"/>
+                                <Label Text="{Binding Discription}" TextColor="#303030" FontSize="12" Grid.Column="1" Grid.Row="1"
+                                       Margin="10,0,10,10"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+        <Frame Grid.Row="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"
+               BackgroundColor="#240042" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Vertical" Grid.Column="0">
+                    <ic:CircleImage 
+                            Margin="0,-35,0,0"
+                            HeightRequest="60"
+                            Aspect="AspectFit"
+                            BorderColor="#7E00E6"
+                            BorderThickness="2"
+                            Source="door">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="ExitButton" Tapped="ExitButton_Tapped" />
+                        </Image.GestureRecognizers>
+                    </ic:CircleImage>
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Exit"
+                                   TextColor="White" FontSize="12"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Column="1">
+                    <ic:CircleImage 
+                            Margin="0,-35,0,0"
+                            HeightRequest="60"
+                            Aspect="AspectFit"
+                                                BorderColor="#7E00E6"
+                        BorderThickness="2"
+                            Source="web">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="WebSiteButton" Tapped="WebSiteButton_Tapped" />
+                        </Image.GestureRecognizers>
+                    </ic:CircleImage>
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="WebSite"
+                                   TextColor="White" FontSize="12"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Column="2">
+                    <ic:CircleImage 
+                            Margin="0,-35,0,0"
+                            HeightRequest="60"
+                            Aspect="AspectFit"
+                        BorderColor="#7E00E6"
+                        BorderThickness="2"
+                            Source="telegram">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TelegramChannelButton" Tapped="TelegramChannelButton_Tapped" />
+                        </Image.GestureRecognizers>
+                    </ic:CircleImage>
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Telegram"
+                                   TextColor="White" FontSize="12"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </Grid>
+
+</ContentPage>

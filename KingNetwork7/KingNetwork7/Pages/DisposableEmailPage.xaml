@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KingNetwork7.Pages.DisposableEmailPage"
+             Title="Disposable Email">
+
+    <Grid BackgroundColor="#240042">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" VerticalOptions="Center" Margin="50,0,50,0">
+
+            <Grid VerticalOptions="End">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Your Disposable Email Is Ready !" TextColor="White" BackgroundColor="Transparent"
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="End" Grid.Row="0" FontSize="10"/>
+
+                <Frame Grid.Row="1" BackgroundColor="#FFFFFF" x:Name="AddressBarFrame"
+                       CornerRadius="20" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                    <ScrollView>
+                        <Label Text="{Binding CurrentDisposableEmailAddress}" TextColor="Black" FontSize="14"
+                           VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </ScrollView>
+                </Frame>
+
+                <Button Text="Copy" Grid.Row="2" CornerRadius="10" FontSize="16" BackgroundColor="Orange"
+                        TextColor="Black" x:Name="btnCopyEmailAddress" Command="{StaticResource CopyDisposableEmailAddressCommand}"/>
+            </Grid>
+
+        </StackLayout>
+        <Grid Grid.Row="1" Margin="10,0,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Text="Refresh" Grid.Column="0" FontSize="14" BackgroundColor="BlueViolet"
+                        TextColor="White" Command="{StaticResource ReloadEmails}"/>
+            <Button Text="Change" Grid.Column="1" FontSize="14" BackgroundColor="ForestGreen"
+                        TextColor="White" Command="{StaticResource ChangeEmailAddressCommand}"/>
+            <Button Text="Delete" Grid.Column="2" FontSize="14" BackgroundColor="OrangeRed"
+                        TextColor="White" Command="{StaticResource GetNewEmailCommand}"/>
+        </Grid>
+        <Frame Grid.Row="2" Grid.RowSpan="2" BackgroundColor="#2D0040" BorderColor="#7E00E6" Margin="10">
+            <ListView ItemsSource="{Binding Emails}" IsRefreshing="{Binding IsBusy}" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding subject}" Detail="{Binding from}" DetailColor="Gray"
+                                  Command="{StaticResource NavigateToViewEmailCommand}" CommandParameter="{Binding id}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+    </Grid>
+    
+</ContentPage>

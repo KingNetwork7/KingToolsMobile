@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:commands="clr-namespace:KingNetwork7.Commons.Commands"
+             mc:Ignorable="d"
+             x:Class="KingNetwork7.App">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <commands:CheckCreditCardsCommand x:Key="CheckCreditCardsCommand"/>
+            <commands:GenerateNewPasswordCommand x:Key="GenerateNewPasswordCommand"/>
+            <commands:CopyDisposableEmailAddressCommand x:Key="CopyDisposableEmailAddressCommand"/>
+            <commands:GetNewEmailCommand x:Key="GetNewEmailCommand"/>
+            <commands:ReloadEmails x:Key="ReloadEmails"/>
+            <commands:ChangeEmailAddressCommand x:Key="ChangeEmailAddressCommand"/>
+            <commands:CopyCommand x:Key="CopyCommand"/>
+            <commands:GenerateCreditCardsCommand x:Key="GenerateCreditCardsCommand"/>
+            <commands:CopyGeneratedCardsCommand x:Key="CopyGeneratedCardsCommand"/>
+            <commands:NavigateToViewEmailCommand x:Key="NavigateToViewEmailCommand"/>
+            <commands:NavigateCommand x:Key="NavigateCommand"/>
+            <commands:GetNewFakePersonInfos x:Key="GetNewFakePersonInfos"/>
+            <commands:FakeInfoRefreshViewRefreshingCommand x:Key="FakeInfoRefreshViewRefreshingCommand"/>
+        </ResourceDictionary>
+        
+    </Application.Resources>
+</Application>

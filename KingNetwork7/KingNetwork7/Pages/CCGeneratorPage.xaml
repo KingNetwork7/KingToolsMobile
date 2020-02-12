@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KingNetwork7.Pages.CCGeneratorPage"
+             Title="CC Generator">
+    <ContentPage.Content>
+
+        <Grid BackgroundColor="#240042" Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="Transparent" Grid.Row="0" x:Name="form">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                    <Label Text="BIN" TextColor="White" VerticalOptions="Center"/>
+                    <Entry Placeholder=" xxxx xxxx xxxx xxxx " TextColor="White" 
+                           PlaceholderColor="Gray" MaxLength="16" Text="{Binding BIN}"
+                           FontSize="14"/>
+                </StackLayout>
+
+                <Grid Grid.Row="1" Margin="15,0,15,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Orientation="Vertical" Grid.Column="0">
+                        <Label Text="Month : " VerticalOptions="Center" TextColor="White"/>
+                        <Picker HorizontalOptions="FillAndExpand" Title="Month" TextColor="White"  VerticalOptions="Start"
+                                TitleColor="Gray" FontSize="14" x:Name="MonthPicker" SelectedIndexChanged="MonthPicker_SelectedIndexChanged">
+                            <Picker.Items>
+                                <x:String>random</x:String>
+                                <x:String>01</x:String>
+                                <x:String>02</x:String>
+                                <x:String>03</x:String>
+                                <x:String>04</x:String>
+                                <x:String>05</x:String>
+                                <x:String>06</x:String>
+                                <x:String>07</x:String>
+                                <x:String>08</x:String>
+                                <x:String>09</x:String>
+                                <x:String>10</x:String>
+                                <x:String>11</x:String>
+                                <x:String>12</x:String>
+                            </Picker.Items>
+                            <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                        </Picker>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Grid.Column="1">
+                        <Label Text="Year : " VerticalOptions="Center" TextColor="White"/>
+                        <Picker HorizontalOptions="FillAndExpand" TextColor="White"
+                                FontSize="14" x:Name="YearPicker" SelectedIndexChanged="YearPicker_SelectedIndexChanged">
+                            <Picker.Items>
+                                <x:String>random</x:String>
+                                <x:String>2020</x:String>
+                                <x:String>2021</x:String>
+                                <x:String>2022</x:String>
+                                <x:String>2023</x:String>
+                                <x:String>2024</x:String>
+                                <x:String>2025</x:String>
+                                <x:String>2026</x:String>
+                                <x:String>2027</x:String>
+                                <x:String>2028</x:String>
+                                <x:String>2029</x:String>
+                                <x:String>2030</x:String>
+                            </Picker.Items>
+                            <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                        </Picker>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Grid.Column="2">
+                        <Label Text="CVV : " VerticalOptions="Center" TextColor="White"/>
+                        <Entry HorizontalOptions="FillAndExpand" PlaceholderColor="White" 
+                               Placeholder="random" Keyboard="Numeric" MaxLength="4" 
+                               TextColor="White" FontSize="14" Text="{Binding CVV}"/>
+                    </StackLayout>
+                </Grid>
+
+                <Grid Grid.Row="2" Margin="15,0,15,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Count : " VerticalOptions="Center" TextColor="White" FontSize="14"/>
+                        <Entry HorizontalOptions="StartAndExpand" Keyboard="Numeric" TextColor="White" 
+                               FontSize="14" Text="{Binding CountToGenerate}" Grid.Column="1" WidthRequest="50"/>
+                    </Grid>
+                    <Button Text="Generate" Grid.Column="1" FontSize="10"
+                            Command="{StaticResource GenerateCreditCardsCommand}" HeightRequest="50"/>
+                </Grid>
+                
+            </Grid>
+
+            <Frame BackgroundColor="#240042" CornerRadius="10"
+                       Grid.Row="1" x:Name="cardsFrame" BorderColor="#7E00E6">
+                <Grid BackgroundColor="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListView ItemsSource="{Binding GeneratedCards}" HasUnevenRows="True" IsRefreshing="{Binding IsBusy}" Grid.Row="0"
+                              x:Name="GeneratedCardsListView" ItemTapped="GeneratedCardsListView_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding }"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Text="Copy Cards" CornerRadius="15" Grid.Row="1" BackgroundColor="#FFFFFF" 
+                            Command="{StaticResource CopyGeneratedCardsCommand}" TextColor="Black"/>
+                </Grid>
+            </Frame>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>
